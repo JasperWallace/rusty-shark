@@ -85,7 +85,8 @@ impl Protocol for Ethernet {
                     _ => RawBytes::unknown_protocol("Unknown Ethertype"),
                 };
 
-                values.push(("Type", Ok(Val::Enum(i as u64, protocol.short_name()))));
+                values.push(("Type", Ok(Val::String(protocol.short_name().to_string() ))));
+                values.push(("Type", Ok(Val::Unsigned {value: i as u64, radix: 16}) ));
                 values.push((protocol.full_name(), protocol.dissect(remainder)));
             },
             Err(e) => {

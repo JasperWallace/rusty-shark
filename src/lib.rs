@@ -176,7 +176,7 @@ impl Val {
                 2 => format!["{:b}", value],
                 8 => format!["{:o}", value],
                 10 => format!["{}", value],
-                16 => format!["{:x}", value],
+                16 => format!["0x{:x}", value],
                 _ => format!["{:?} (base {})", value, radix],
             },
             Val::Enum(i, s) => format!["{} ({})", i, s],
